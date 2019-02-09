@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
-<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PHP_CodeSniffer" xsi:noNamespaceSchemaLocation="./vendor/squizlabs/php_codesniffer/phpcs.xsd">
+<ruleset
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        name="PHP_CodeSniffer"
+        xsi:noNamespaceSchemaLocation="./vendor/squizlabs/php_codesniffer/phpcs.xsd">
     <description>The coding standard for timrourke/yodata</description>
 
     <file>lib</file>
@@ -10,12 +13,15 @@
     <arg name="parallel" value="75"/>
     <arg value="np"/>
 
+    <!-- Enforce the full PSR-1 and PSR-2 standards -->
+    <rule ref="PSR12"/>
+
     <!-- Don't hide tokenizer exceptions -->
     <rule ref="Internal.Tokenizer.Exception">
         <type>error</type>
     </rule>
 
-    <!-- Include some sniffs from other standards that don't conflict with PEAR -->
+    <!-- Include some sniffs from other standards -->
     <rule ref="Squiz.Arrays.ArrayBracketSpacing"/>
     <rule ref="Squiz.Arrays.ArrayDeclaration"/>
     <rule ref="Squiz.ControlStructures.ControlSignature"/>
@@ -116,10 +122,4 @@
     <rule ref="PSR2.Classes.PropertyDeclaration.Underscore">
         <type>error</type>
     </rule>
-
-    <!-- The testing bootstrap file uses string concats to stop IDEs seeing the class aliases -->
-    <rule ref="Generic.Strings.UnnecessaryStringConcat">
-        <exclude-pattern>tests/bootstrap.php</exclude-pattern>
-    </rule>
-
 </ruleset>
