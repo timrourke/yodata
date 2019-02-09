@@ -1,0 +1,14 @@
+{
+    "name": "timrourke/yodata",
+    "description": "An OASIS OData v4.x query builder",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tim Rourke",
+            "email": "tim@timrourke.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
