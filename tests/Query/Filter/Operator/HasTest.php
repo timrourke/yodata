@@ -6,7 +6,7 @@ namespace Yodata\Tests\Query\Filter\Operator;
 
 use PHPUnit\Framework\TestCase;
 use Yodata\Query\Filter\Operator\Has;
-use Yodata\Query\Filter\Value\Literal;
+use Yodata\Query\Filter\Value\StringValue;
 
 class HasTest extends TestCase
 {
@@ -15,15 +15,15 @@ class HasTest extends TestCase
      */
     public function shouldRenderHasFlagExpression(): void
     {
-        $expectedValue      = "IceCream.Flavor'Strawberry'";
-        $expectedExpression = "has $expectedValue";
+        $expectedEnumField = 'IceCream.Flavors';
+        $expectedValue     = 'Strawberry';
 
-        $value = new Literal($expectedValue);
+        $value = new StringValue($expectedValue);
 
-        $has = new Has($value);
+        $has = new Has($expectedEnumField, $value);
 
         static::assertSame(
-            $expectedExpression,
+            "has IceCream.Flavors'Strawberry'",
             $has->__toString()
         );
     }
