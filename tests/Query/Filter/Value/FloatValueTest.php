@@ -5,19 +5,19 @@ declare(strict_types=1);
 namespace Yodata\Tests\Query\Filter\Value;
 
 use PHPUnit\Framework\TestCase;
-use Yodata\Query\Filter\Value\IntValue;
+use Yodata\Query\Filter\Value\FloatValue;
 
-class IntValueTest extends TestCase
+class FloatValueTest extends TestCase
 {
     /**
      * @test
      */
-    public function shouldRenderIntValue(): void
+    public function shouldRenderFloatValue(): void
     {
-        $value         = 10;
-        $expectedValue = "10";
+        $value         = 28.732;
+        $expectedValue = "28.732";
 
-        $stringValue = new IntValue($value);
+        $stringValue = new FloatValue($value);
 
         static::assertSame(
             $expectedValue,

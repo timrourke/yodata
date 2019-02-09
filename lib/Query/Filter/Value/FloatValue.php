@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace Yodata\Query\Filter\Value;
 
-class IntValue implements ValueInterface
+class FloatValue implements ValueInterface
 {
     /**
-     * @var integer
+     * @var float
      */
     private $value;
 
-    public function __construct(int $value)
+    public function __construct(float $value)
     {
         $this->value = $value;
     }
 
     public function __toString(): string
     {
-        return sprintf("%d", $this->value);
+        return sprintf("%s", $this->value);
     }
 }

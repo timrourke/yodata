@@ -14,17 +14,17 @@ class Expression implements ExpressionInterface
     /**
      * @var string
      */
-    private $field;
+    protected $field;
 
     /**
      * @var \Yodata\Query\Filter\Operator\OperatorInterface
      */
-    private $operator;
+    protected $operator;
 
     /**
      * @var \Yodata\Query\Filter\LogicalOperator\LogicalOperatorInterface
      */
-    private $nextSibling;
+    protected $nextSibling;
 
     public function __construct(string $field, OperatorInterface $operator)
     {
