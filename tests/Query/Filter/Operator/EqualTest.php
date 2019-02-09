@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Yodata\Tests\Query\Operator;
+namespace Yodata\Tests\Query\Filter\Operator;
 
 use PHPUnit\Framework\TestCase;
 use Yodata\Query\Filter\Operator\Equal;

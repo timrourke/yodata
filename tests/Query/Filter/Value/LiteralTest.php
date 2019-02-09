@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Yodata\Tests\Query\Value;
+namespace Yodata\Tests\Query\Filter\Value;
 
 use Yodata\Query\Filter\Value\Literal;
 use PHPUnit\Framework\TestCase;
