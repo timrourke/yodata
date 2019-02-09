@@ -15,7 +15,7 @@ class EqualTest extends TestCase
      */
     public function shouldRenderEqualityExpression(): void
     {
-        $expectedValue = 3.14;
+        $expectedValue      = 3.14;
         $expectedExpression = "eq $expectedValue";
 
         $value = new Literal($expectedValue);

@@ -13,7 +13,7 @@ class LessThanTest extends TestCase
      */
     public function shouldRenderLessThanExpression(): void
     {
-        $expectedValue = 84;
+        $expectedValue      = 84;
         $expectedExpression = "lt $expectedValue";
 
         $value = new Literal($expectedValue);

@@ -15,7 +15,7 @@ class HasTest extends TestCase
      */
     public function shouldRenderHasFlagExpression(): void
     {
-        $expectedValue = "IceCream.Flavor'Strawberry'";
+        $expectedValue      = "IceCream.Flavor'Strawberry'";
         $expectedExpression = "has $expectedValue";
 
         $value = new Literal($expectedValue);

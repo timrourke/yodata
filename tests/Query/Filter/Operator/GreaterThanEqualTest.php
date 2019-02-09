@@ -13,7 +13,7 @@ class GreaterThanEqualTest extends TestCase
      */
     public function shouldRenderGreaterThanEqualExpression(): void
     {
-        $expectedValue = 34;
+        $expectedValue      = 34;
         $expectedExpression = "ge $expectedValue";
 
         $value = new Literal($expectedValue);

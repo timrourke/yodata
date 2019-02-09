@@ -20,7 +20,7 @@ class Expression implements ExpressionInterface
 
     public function __construct(string $field, OperatorInterface $operator)
     {
-        $this->field = $field;
+        $this->field    = $field;
         $this->operator = $operator;
     }
 

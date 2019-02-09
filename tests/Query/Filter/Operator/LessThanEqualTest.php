@@ -13,7 +13,7 @@ class LessThanEqualTest extends TestCase
      */
     public function shouldRenderLessThanEqualExpression(): void
     {
-        $expectedValue = 932;
+        $expectedValue      = 932;
         $expectedExpression = "le $expectedValue";
 
         $value = new Literal($expectedValue);

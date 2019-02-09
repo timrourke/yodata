@@ -13,7 +13,7 @@ class NotEqualTest extends TestCase
      */
     public function shouldRenderNotEqualExpression(): void
     {
-        $expectedValue = "'some string'";
+        $expectedValue      = "'some string'";
         $expectedExpression = "ne $expectedValue";
 
         $value = new Literal($expectedValue);
