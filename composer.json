@@ -15,5 +15,15 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yodata\\": "lib"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Yodata\\Tests\\": "tests"
+        }
     }
 }
