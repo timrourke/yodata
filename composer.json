@@ -30,6 +30,8 @@
         }
     },
     "scripts": {
+        "lint": "phpcs",
+        "lint-fix": "phpcbf",
         "phpstan": "phpstan analyse -l max -c phpstan.neon lib tests",
         "test": "phpunit --coverage-text"
     }
