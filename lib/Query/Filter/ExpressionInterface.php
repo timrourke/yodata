@@ -8,6 +8,5 @@ interface ExpressionInterface
 {
     public function and(ExpressionInterface $expression): ExpressionInterface;
     public function or(ExpressionInterface $expression): ExpressionInterface;
-    public function not(ExpressionInterface $expression): ExpressionInterface;
     public function __toString(): string;
 }

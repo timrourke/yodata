@@ -30,11 +30,6 @@ abstract class AbstractLogicalOperator implements LogicalOperatorInterface
         $this->expression->or($expression);
     }
 
-    public function not(ExpressionInterface $expression): void
-    {
-        $this->expression->not($expression);
-    }
-
     public function __toString(): string
     {
         return sprintf(

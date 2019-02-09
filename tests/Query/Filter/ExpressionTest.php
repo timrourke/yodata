@@ -118,48 +118,6 @@ class ExpressionTest extends TestCase
     /**
      * @test
      */
-    public function shouldRenderNotExpression(): void
-    {
-        $expression = new Expression(
-            'YearBuilt',
-            new GreaterThanEqual(new IntValue(1996))
-        );
-
-        $expression->not(
-            new Expression(
-                'YearBuilt',
-                new Equal(new IntValue(2001))
-            )
-        );
-
-        static::assertSame(
-            "YearBuilt ge 1996 not YearBuilt eq 2001",
-            $expression->__toString()
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function shouldRenderMultipleNotExpressions(): void
-    {
-        $expression = (
-            new Expression('Type', new Equal(new StringValue('shirt')))
-        )->not(
-            new Expression('Type', new Equal(new StringValue('pants')))
-        )->not(
-            new Expression('Type', new Equal(new StringValue('hat')))
-        );
-
-        static::assertSame(
-            "Type eq 'shirt' not Type eq 'pants' not Type eq 'hat'",
-            $expression->__toString()
-        );
-    }
-
-    /**
-     * @test
-     */
     public function shouldCombineLogicalOperators(): void
     {
         $expression = (
