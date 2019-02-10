@@ -20,11 +20,6 @@ abstract class AbstractLogicalOperator implements LogicalOperatorInterface
         $this->expression = $expression;
     }
 
-    public function expression(): ExpressionInterface
-    {
-        return $this->expression;
-    }
-
     public function and(ExpressionInterface $expression): void
     {
         $this->expression->and($expression);
