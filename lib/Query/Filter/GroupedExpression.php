@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Yodata\Query\Filter;
 
 use Yodata\Query\Filter\LogicalOperator\AndOperator;
-use Yodata\Query\Filter\LogicalOperator\NotOperator;
+use Yodata\Query\Filter\LogicalOperator\LogicalOperatorInterface;
 use Yodata\Query\Filter\LogicalOperator\OrOperator;
 
 class GroupedExpression implements ExpressionInterface
@@ -16,9 +16,9 @@ class GroupedExpression implements ExpressionInterface
     private $expression;
 
     /**
-     * @var \Yodata\Query\Filter\LogicalOperator\LogicalOperatorInterface
+     * @var \Yodata\Query\Filter\LogicalOperator\LogicalOperatorInterface[]
      */
-    private $nextSibling;
+    private $siblings = [];
 
     public function __construct(ExpressionInterface $expression)
     {
@@ -41,32 +41,27 @@ class GroupedExpression implements ExpressionInterface
 
     public function andWhere(GroupedExpression $expression): GroupedExpression
     {
-        if (null !== $this->nextSibling) {
-            $this->nextSibling->and($expression);
-        } else {
-            $this->nextSibling = new AndOperator($expression);
-        }
+        $this->siblings[] = new AndOperator($expression);
 
         return $this;
     }
 
     public function orWhere(GroupedExpression $expression): GroupedExpression
     {
-        if (null !== $this->nextSibling) {
-            $this->nextSibling->or($expression);
-        } else {
-            $this->nextSibling = new OrOperator($expression);
-        }
+        $this->siblings[] = new OrOperator($expression);
 
         return $this;
     }
 
     public function __toString(): string
     {
-        return sprintf(
-            '(%s)%s',
-            $this->expression,
-            (string) $this->nextSibling
+        $siblings = array_map(
+            function (LogicalOperatorInterface $operator) {
+                return (string) $operator;
+            },
+            $this->siblings
         );
+
+        return sprintf('(%s)', $this->expression) . implode('', $siblings);
     }
 }

@@ -5,8 +5,6 @@ declare(strict_types=1);
 namespace Yodata\Query\Filter;
 
 use Yodata\Query\Filter\LogicalOperator\AndOperator;
-use Yodata\Query\Filter\LogicalOperator\LogicalOperatorInterface;
-use Yodata\Query\Filter\LogicalOperator\NotOperator;
 use Yodata\Query\Filter\LogicalOperator\OrOperator;
 use Yodata\Query\Filter\Operator\OperatorInterface;
 
@@ -67,10 +65,5 @@ class Expression implements ExpressionInterface
             $this->operator,
             (string) $this->nextSibling
         );
-    }
-
-    protected function nextSibling(): LogicalOperatorInterface
-    {
-        return $this->nextSibling;
     }
 }

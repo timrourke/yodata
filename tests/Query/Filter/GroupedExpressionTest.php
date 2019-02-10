@@ -103,6 +103,31 @@ class GroupedExpressionTest extends TestCase
     /**
      * @test
      */
+    public function shouldChainMultipleGroupedExpressions(): void
+    {
+        $groupedExpression = (
+            new GroupedExpression(
+                new Expression('One', new Equal(new IntValue(1)))
+            )
+        )->orWhere(
+            new GroupedExpression(
+                new Expression('Two', new Equal(new IntValue(2)))
+            )
+        )->andWhere(
+            new GroupedExpression(
+                new Expression('Three', new Equal(new IntValue(3)))
+            )
+        );
+
+        static::assertSame(
+            "(One eq 1) or (Two eq 2) and (Three eq 3)",
+            $groupedExpression->__toString()
+        );
+    }
+
+    /**
+     * @test
+     */
     public function shouldChainExpressionsWithLogicalOperatorsToInsideOfGroup(): void
     {
         $expression = new Expression('Foo', new NotEqual(new StringValue('Bar')));
@@ -111,10 +136,12 @@ class GroupedExpressionTest extends TestCase
             new GroupedExpression($expression)
         )->and(
             new Expression('Baz', new Equal(new StringValue('Blah')))
+        )->or(
+            new Expression('Bang', new GreaterThanEqual(new FloatValue(1.2)))
         );
 
         static::assertSame(
-            "(Foo ne 'Bar' and Baz eq 'Blah')",
+            "(Foo ne 'Bar' and Baz eq 'Blah' or Bang ge 1.2)",
             $groupedExpression->__toString()
         );
     }

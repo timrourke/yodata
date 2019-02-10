@@ -10,5 +10,6 @@ interface LogicalOperatorInterface
 {
     public function and(ExpressionInterface $expression): void;
     public function or(ExpressionInterface $expression): void;
+    public function expression(): ExpressionInterface;
     public function __toString(): string;
 }
