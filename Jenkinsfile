@@ -1,6 +1,6 @@
 pipeline {
 	agent {
-		docker { 'trourke/php-hot-lunch:latest' }
+		docker { image 'trourke/php-hot-lunch:latest' }
 	}
 	stages {
 		stage('Test') {
