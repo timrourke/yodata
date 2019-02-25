@@ -8,20 +8,22 @@ pipeline {
 				sh 'composer install'
 			}
 		}
-		parallel {
-			stage('Lint') {
-				steps {
-					sh 'composer lint'
+		stage('Execute Tests') {
+			parallel {
+				stage('Lint') {
+					steps {
+						sh 'composer lint'
+					}
 				}
-			}
-			stage('Test') {
-				steps {
-					sh 'composer test'
+				stage('Test') {
+					steps {
+						sh 'composer test'
+					}
 				}
-			}
-			stage('Static Analysis') {
-				steps {
-					sh 'composer phpstan'
+				stage('Static Analysis') {
+					steps {
+						sh 'composer phpstan'
+					}
 				}
 			}
 		}
