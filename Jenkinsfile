@@ -3,10 +3,24 @@ pipeline {
 		docker { image 'trourke/php-hot-lunch:latest' }
 	}
 	stages {
-		stage('Test') {
+		stage('Composer Install') {
 			steps {
 				sh 'composer install'
+			}
+		}
+		stage('Lint') {
+			steps {
+				sh 'composer lint'
+			}
+		}
+		stage('Test') {
+			steps {
 				sh 'composer test'
+			}
+		}
+		stage('Static Analysis') {
+			steps {
+				sh 'composer phpstan'
 			}
 		}
 	}
